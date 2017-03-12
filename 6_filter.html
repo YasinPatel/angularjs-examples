@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <h3>Filter Example</h3>
+  <div class="" ng-app="myApp" ng-controller="myCtrl">
+    <p>uppercase {{name | uppercase }}</p>
+    <p>lowercase {{lname | lowercase }}</p>
+    <p>currency </p><p ng-bind="price | currency ">currency</p>
+
+    <p>filter in array: words with character 's' </p>
+    <ul>
+      <li ng-repeat="x in names |filter:'s'">{{x.name}}</li>
+    </ul>
+    <div class="form-group">
+      <p><b>filter by user input</b></p>
+      <input type="text" class="" ng-model="byinput">
+      <ul>
+        <li ng-repeat="x in names |filter:byinput">{{x.name}}</li>
+      </ul>
+    </div>
+
+    <p>order by name</p>
+    <ul>
+      <li ng-repeat="val in names | orderBy:'name'">{{val.name +' | '+ val.country}}</li>
+    </ul>
+
+    <p>order by country</p>
+    <ul>
+      <li ng-repeat="val in names | orderBy:'country'">{{val.name +' | '+ val.country}}</li>
+    </ul>
+
+    <div class="col-sm-4">
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td ng-click="orderfun('name')">Name</td>
+              <td ng-click="orderfun('country')">Country</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="x in names | orderBy:rahil">
+              <td>{{x.name}}</td>
+              <td>{{x.country}}</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+</body>
+
+<script>
+app=angular.module('myApp',[]);
+
+app.controller('myCtrl',function($scope){
+  $scope.name="yasin";
+  $scope.lname="YASIN";
+
+  $scope.price=25;
+
+  $scope.names=[
+    {name:'yasin',country:'jorden'},
+    {name:'akash',country:'usa'},
+    {name:'aniket',country:'dubai'},
+    {name:'rajesh',country:'america'},
+    {name:'aadil',country:'japan'},
+    {name:'irfan',country:'china'},
+    {name:'rahil',country:'london'},
+    {name:'indra',country:'bhutan'},
+    {name:'arshad',country:'nepal'},
+  ];
+  $scope.orderfun=function(x){
+    $scope.rahil=x;
+  }
+});
+</script>
+</html>

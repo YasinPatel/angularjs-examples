@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <h3>Service Example</h3>
+  <div class="" ng-app="myApp">
+    <div class="col-sm-12" ng-controller="myCtrl">
+      <p>absUrl :{{absurl}}</p>
+      <p>url :{{ protocol }}</p>
+    </div>
+    <div class="col-sm-4" ng-controller="calCtrl" >
+      <div class="form-group">
+        <input type="number" ng-model="number" class="form-control" >
+        <button class="btn btn-success" ng-click="square()">X<sup>2</sup></button>
+      </div>
+      <p>
+        Result: {{ result }}
+      </p>
+    </div>
+
+  </div>
+</body>
+
+<script>
+app=angular.module('myApp',[]);
+app.value("defaultval",5);
+app.controller('myCtrl',function($scope,$location){
+  $scope.absurl=$location.absUrl();
+  $scope.protocol=$location.host();
+});
+
+app.factory('mathService',function(){
+  var factory = {};
+
+  factory.multiply=function(a,b){
+    return a*b;
+  }
+
+  factory.add=function(a,b){
+    return a+b;
+  }
+  return factory;
+});
+
+app.service('calservice',function(mathService){
+  this.square=function(a){
+    return mathService.multiply(a,a);
+  }
+});
+
+app.controller('calCtrl',function($scope,calservice,defaultval){
+    $scope.number=defaultval;
+  $scope.square=function(){
+    $scope.result=calservice.square($scope.number);
+  }
+});
+
+</script>
+</html>

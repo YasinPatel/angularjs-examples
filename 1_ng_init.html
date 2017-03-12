@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <div ng-app="">
+    <h3>ng-init example</h3>
+      <div  data-ng-init="lastName='Yasin';dadname='sahil'"></div>
+
+      <div  ng-init="firstName='Muhammad'" data-ng-init="lastName='Yasin'">
+        <h3> <span ng-bind="firstName"></span> <span ng-bind="dadname"></span>  <span data-ng-bind="lastName"></span></h3>
+      </div>
+
+
+
+      <div class="col-sm-2">
+        <p>Enter Name: <input type="text" ng-model="name" class="form-control" ></p>
+        <p>{{name}}</p>
+        <!-- using ng-bind -->
+        <p ng-bind="name"></p>
+
+      </div>
+
+  </div>
+</body>
+</html>

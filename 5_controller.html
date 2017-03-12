@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container col-sm-5">
+    <h3>Controller Example</h3>
+    <li><h4>by clicking name value has been changes</h4></li>
+    <div ng-app="myApp">
+      {{firstname}}
+      <!-- controller example -->
+      <div ng-controller="myCtrl">
+        <h5 ng-click="changeName()">{{firstname}}</h1>
+      </div>
+
+      <!-- method in controller -->
+      <li><h4>method in controller </h4></li>
+      <div ng-controller="personCtrl">
+          First Name: <input type="text" ng-model="firstName"><br>
+          Last Name: <input type="text" ng-model="lastName"><br>
+          <br>
+          Full Name: {{fullName()}}
+
+      </div>
+
+    </div>
+  </div>
+</body>
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope) {
+    $rootScope.firstname = 'This is Root scope';
+});
+app.controller('myCtrl', function($scope) {
+    $scope.firstname = "Muhammad";
+    $scope.changeName = function() {
+        $scope.firstname = "Yasin";
+    }
+});
+
+
+app.controller('personCtrl', function($scope) {
+    $scope.firstName = "Muhammad";
+    $scope.lastName = "Yasin";
+    $scope.fullName = function() {
+        return $scope.firstName + " " + $scope.lastName;
+    };
+});
+</script>
+</html>

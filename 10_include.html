@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <h3>Include Example</h3>
+  <div class="" ng-app="myApp" ng-controller="myCtrl">
+
+      <div class="col-sm-6">
+        <!-- by include -->
+        <div class="" ng-include="'other/forinclude.html'"></div>
+
+        <!-- by ajax -->
+        <ul>
+          <li ng-repeat="stud in students" >
+            <span>{{ stud.Name}}</span>
+            <span>{{ stud.RollNo}}</span>
+            <span>{{ stud.Percentage}}</span>
+          </li>
+        </ul>
+
+      </div>
+
+  </div>
+</body>
+
+<script>
+  var app=angular.module('myApp',[]);
+
+  app.controller('myCtrl',function($scope,$http){
+
+    $scope.first='yasin';
+    $scope.last='patel';
+
+    var url="other/data.txt";
+    $http.get(url).success(function(response){
+      $scope.students=response;
+    });
+
+  });
+</script>

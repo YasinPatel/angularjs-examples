@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <h3>View Example</h3>
+  <div class="" ng-app="myApp">
+
+      <div class="col-sm-6">
+        <div class="col-sm-12">
+          <a class="btn btn-primary" href="#login"> Login </a>
+          <a class="btn btn-primary" href="#signup"> Sign Up </a>
+        </div>
+
+        <div class="" ng-view>
+        </div>
+
+        <!-- <div  class="col-sm-12">
+            <script type="text/ng-template" id="addrecord.html">
+              <h4>Add Record</h4>
+              {{ message}}
+            </script>
+            <script type="text/ng-template" id="viewrecord.html">
+              <h4>View Record</h4>
+              {{ message}}
+            </script>
+        </div> -->
+
+      </div>
+
+  </div>
+</body>
+
+<script>
+  var app=angular.module('myApp',['ngRoute']);
+
+  app.config(function($routeProvider){
+    $routeProvider.
+
+    when('/login',{
+        templateUrl:'other/addrecord.html'
+        // controller:'addrecordCtrl'
+    }).
+
+    when('/signup',{
+        templateUrl:'other/viewrecord.html'
+        // controller:'viewrecordCtrl'
+    });
+    //
+    // otherview({
+    //   redirectTo:'/addrecord'
+    // });
+
+  });
+
+
+  // app.controller('addrecordCtrl',function($scope){
+  //   $scope.message="Add record page";
+  // });
+  //
+  // app.controller('viewrecordCtrl',function($scope){
+  //   $scope.message="View record page";
+  // });
+
+</script>

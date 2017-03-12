@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container col-sm-5">
+    <h3>Directives</h3>
+    <div ng-app="myApp">
+      <!--  ng-repeat directive repeats an HTML element -->
+      <h4>Names list using ng-repeat</h4>
+      <div ng-init="names=['Muhammad','Yasin','Patel']">
+        <ul>
+          <li ng-repeat="x in names">
+            {{ x }}
+          </li>
+        </ul>
+      </div>
+
+      <!--  ng-repeat directive repeats an HTML element -->
+      <h4>Array of objects</h4>
+      <div ng-init="list=[
+      {name:'Muhammad',country:'Norway'},
+      {name:'Yasin',country:'Sweden'},
+      {name:'Patel',country:'Denmark'}]">
+
+      <ul>
+        <li ng-repeat="x	in list">
+          {{ x.name + ', ' + x.country }}
+        </li>
+      </ul>
+
+      </div>
+
+      <!-- create new directive -->
+      <!--   When naming a directive, you must use a camel case name,
+      w3TestDirective, but when invoking it, you must use - separated name, w3-test-directive-->
+      <h4>Creating directive </h4>
+      <p>Directive by element Name : <demo-directive></demo-directive></p>
+      <p>Directive by Attribute : <span demo-directive></span></p>
+      <p>Directive by Class : <span class="demo-directive"></span></p>
+      <h4>email validation</h4>
+      <form  name="myForm">
+        Email:
+        <input type="email" name="myAddress" ng-model="text">
+        <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+    </form>
+    </div>
+  </div>
+</body>
+<!-- The legal restrict values are:
+E for Element name
+A for Attribute
+C for Class
+M for Comment -->
+<script>
+var app = angular.module("myApp", []);
+app.directive("demoDirective", function() {
+    return {
+
+        restrict : "AECM",
+        template : "Muhammad"
+    };
+});
+</script>
+</html>

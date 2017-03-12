@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Example</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet"  href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container col-sm-5">
+    <h3>Expressions</h3>
+    <div ng-app="">
+      <!-- math exp -->
+ 	    <p>Sum ( 5 + 5 )  : {{ 5 + 5 }}</p>
+
+      <!-- math exp using init-->
+      <div ng-init="quantity=1;cost=5">
+        <p>Total : {{ quantity * cost }}</p>
+      </div>
+
+      <!-- object -->
+      <h4>Using objects</h4>
+      <div ng-init="person={firstName:'Muhammad',lastName:'Yasin'}">
+        <!-- direct -->
+        <p> First Name:  {{ person.firstName }}</p>
+        <!-- using ng-bind -->
+        <p> Last  Name: <span ng-bind="person.lastName"></span>
+      </div>
+
+      <!-- arrays -->
+      <h4>Arrays in angural</h4>
+      <div ng-init="points=[10,20,30,40,50]">
+        <!-- direct -->
+        <p>The third element is {{ points[2] }}</p>
+        <!-- using ng-bind -->
+        <p>Fourth element is :<span ng-bind="points[3]"></span></p>
+      </div>
+
+
+    </div>
+  </div>
+</body>
+
+</html>
